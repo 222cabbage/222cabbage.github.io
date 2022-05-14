@@ -1,8 +1,9 @@
+http://unknowncabbage.github.io/2022/05/13/Node1/
+http://unknowncabbage.github.io/2022/05/14/algorithm1/
 http://unknowncabbage.github.io/2022/05/14/Face/
 http://unknowncabbage.github.io/2022/05/13/HaoUI2/
 http://unknowncabbage.github.io/about/index.html
 http://unknowncabbage.github.io/2022/05/13/HaoUI1/
-http://unknowncabbage.github.io/2022/05/13/Node1/
 http://unknowncabbage.github.io/tags/index.html
 http://unknowncabbage.github.io/categories/index.html
 http://unknowncabbage.github.io/repository/index.html
@@ -12,6 +13,8 @@ http://unknowncabbage.github.io/
 http://unknowncabbage.github.io/tags/%E4%B8%AA%E4%BA%BA%E7%BB%84%E4%BB%B6%E5%BA%93/
 http://unknowncabbage.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/
 http://unknowncabbage.github.io/tags/Node%E5%AD%A6%E4%B9%A0/
+http://unknowncabbage.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/
 http://unknowncabbage.github.io/categories/HaoUI/
 http://unknowncabbage.github.io/categories/%E9%9D%A2%E8%AF%95/
 http://unknowncabbage.github.io/categories/Node/
+http://unknowncabbage.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/
