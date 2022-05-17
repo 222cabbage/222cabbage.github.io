@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>数据结构 | Cabbage</title>
-  <meta name="description" content="数据结构走起！Loading……">
+  <title>JS运算方法-解决小数点运算精度问题 | Cabbage</title>
+  <meta name="description" content="解决小数点精度问题的JS方法一开始学JS的时候也遇到过小数点精度运算的问题，但是没怎么注意，后来在实习时公司的一个项目需要做到金额的运算 有的金额涉及到了小数点 后运算出的结果会带有很多位小数点 因此就有了这个方法 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构">
-<meta property="og:url" content="https://222cabbage.github.io/2022/05/14/algorithm1/index.html">
+<meta property="og:title" content="JS运算方法-解决小数点运算精度问题">
+<meta property="og:url" content="https://222cabbage.github.io/2022/05/18/tips1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="数据结构走起！Loading……">
+<meta property="og:description" content="解决小数点精度问题的JS方法一开始学JS的时候也遇到过小数点精度运算的问题，但是没怎么注意，后来在实习时公司的一个项目需要做到金额的运算 有的金额涉及到了小数点 后运算出的结果会带有很多位小数点 因此就有了这个方法 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-14T07:04:01.000Z">
-<meta property="article:modified_time" content="2022-05-14T07:46:18.604Z">
+<meta property="article:published_time" content="2022-05-17T16:39:07.000Z">
+<meta property="article:modified_time" content="2022-05-17T16:51:21.090Z">
 <meta property="article:author" content="不知名小白菜">
-<meta property="article:tag" content="数据结构与算法">
+<meta property="article:tag" content="JS方法技巧">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://222cabbage.github.io/2022/05/14/algorithm1/index.html">
+  <link rel="canonical" href="https://222cabbage.github.io/2022/05/18/tips1/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -310,14 +310,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-algorithm1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-tips1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      数据结构
+      JS运算方法-解决小数点运算精度问题
     </h1>
   
 
@@ -325,32 +325,35 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2022/05/14/algorithm1/" class="article-date">
-	  <time datetime="2022-05-14T07:04:01.000Z" itemprop="datePublished">2022-05-14</time>
+	<a href="/2022/05/18/tips1/" class="article-date">
+	  <time datetime="2022-05-17T16:39:07.000Z" itemprop="datePublished">2022-05-18</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    <a class="article-category-link" href="/categories/utils/">utils</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a>
+	<a class="article-tag-link-link" href="/tags/JS%E6%96%B9%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">JS方法技巧</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/14/algorithm1/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/18/tips1/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="数据结构走起！"><a href="#数据结构走起！" class="headerlink" title="数据结构走起！"></a><strong>数据结构走起！</strong></h2><p>Loading……</p>
+        <h2 id="解决小数点精度问题的JS方法"><a href="#解决小数点精度问题的JS方法" class="headerlink" title="解决小数点精度问题的JS方法"></a><strong>解决小数点精度问题的JS方法</strong></h2><p>一开始学JS的时候也遇到过小数点精度运算的问题，但是没怎么注意，后来在实习时公司的一个项目需要做到金额的运算</p>
+<p>有的金额涉及到了小数点 后运算出的结果会带有很多位小数点 因此就有了这个方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">解决小数点计算精度问题</span><br><span class="line">/** * method **</span><br><span class="line"> *  add / subtract / multiply /divide</span><br><span class="line"> * floatObj.add(0.1, 0.2) &gt;&gt; 0.3</span><br><span class="line"> * floatObj.multiply(19.9, 100) &gt;&gt; 1990</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">export const floatObj = function() &#123;</span><br><span class="line">  /*</span><br><span class="line">     * 判断obj是否为一个整数</span><br><span class="line">     */</span><br><span class="line">  function isInteger(obj) &#123;</span><br><span class="line">    return Math.floor(obj) === obj</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /*</span><br><span class="line">     * 将一个浮点数转成整数，返回整数和倍数。如 3.14 &gt;&gt; 314，倍数是 100</span><br><span class="line">     * @param floatNum &#123;number&#125; 小数</span><br><span class="line">     * @return &#123;object&#125;</span><br><span class="line">     *   &#123;times:100, num: 314&#125;</span><br><span class="line">     */</span><br><span class="line">  function toInteger(floatNum) &#123;</span><br><span class="line">    var ret = &#123; times: 1, num: 0 &#125;</span><br><span class="line">    if (isInteger(floatNum)) &#123;</span><br><span class="line">      ret.num = floatNum</span><br><span class="line">      return ret</span><br><span class="line">    &#125;</span><br><span class="line">    var strfi = floatNum + &#x27;&#x27;</span><br><span class="line">    var dotPos = strfi.indexOf(&#x27;.&#x27;)</span><br><span class="line">    var len = strfi.substr(dotPos + 1).length</span><br><span class="line">    var times = Math.pow(10, len)</span><br><span class="line">    var intNum = Number(floatNum.toString().replace(&#x27;.&#x27;, &#x27;&#x27;))</span><br><span class="line">    ret.times = times</span><br><span class="line">    ret.num = intNum</span><br><span class="line">    return ret</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /*</span><br><span class="line">     * 核心方法，实现加减乘除运算，确保不丢失精度</span><br><span class="line">     * 思路：把小数放大为整数（乘），进行算术运算，再缩小为小数（除）</span><br><span class="line">     *</span><br><span class="line">     * @param a &#123;number&#125; 运算数1</span><br><span class="line">     * @param b &#123;number&#125; 运算数2</span><br><span class="line">     * @param digits &#123;number&#125; 精度，保留的小数点数，比如 2, 即保留为两位小数</span><br><span class="line">     * @param op &#123;string&#125; 运算类型，有加减乘除（add/subtract/multiply/divide）</span><br><span class="line">     *</span><br><span class="line">     */</span><br><span class="line">  function operation(a, b, digits, op) &#123;</span><br><span class="line">    var o1 = toInteger(a)</span><br><span class="line">    var o2 = toInteger(b)</span><br><span class="line">    var n1 = o1.num</span><br><span class="line">    var n2 = o2.num</span><br><span class="line">    var t1 = o1.times</span><br><span class="line">    var t2 = o2.times</span><br><span class="line">    var max = t1 &gt; t2 ? t1 : t2</span><br><span class="line">    var result = null</span><br><span class="line">    switch (op) &#123;</span><br><span class="line">      case &#x27;add&#x27;:</span><br><span class="line">        if (t1 === t2) &#123; // 两个小数位数相同</span><br><span class="line">          result = n1 + n2</span><br><span class="line">        &#125; else if (t1 &gt; t2) &#123; // o1 小数位 大于 o2</span><br><span class="line">          result = n1 + n2 * (t1 / t2)</span><br><span class="line">        &#125; else &#123; // o1 小数位 小于 o2</span><br><span class="line">          result = n1 * (t2 / t1) + n2</span><br><span class="line">        &#125;</span><br><span class="line">        return result / max</span><br><span class="line">      case &#x27;subtract&#x27;:</span><br><span class="line">        if (t1 === t2) &#123;</span><br><span class="line">          result = n1 - n2</span><br><span class="line">        &#125; else if (t1 &gt; t2) &#123;</span><br><span class="line">          result = n1 - n2 * (t1 / t2)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          result = n1 * (t2 / t1) - n2</span><br><span class="line">        &#125;</span><br><span class="line">        return result / max</span><br><span class="line">      case &#x27;multiply&#x27;:</span><br><span class="line">        result = (n1 * n2) / (t1 * t2)</span><br><span class="line">        return result</span><br><span class="line">      case &#x27;divide&#x27;:</span><br><span class="line">        result = (n1 / n2) * (t2 / t1)</span><br><span class="line">        return result</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 加减乘除的四个接口</span><br><span class="line">  function add(a, b, digits) &#123;</span><br><span class="line">    return operation(a, b, digits, &#x27;add&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">  function subtract(a, b, digits) &#123;</span><br><span class="line">    return operation(a, b, digits, &#x27;subtract&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">  function multiply(a, b, digits) &#123;</span><br><span class="line">    return operation(a, b, digits, &#x27;multiply&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">  function divide(a, b, digits) &#123;</span><br><span class="line">    return operation(a, b, digits, &#x27;divide&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // exports 暴露出加减乘除四个方法 其他页面引入解构调用</span><br><span class="line">  return &#123;</span><br><span class="line">    add: add,</span><br><span class="line">    subtract: subtract,</span><br><span class="line">    multiply: multiply,</span><br><span class="line">    divide: divide</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -360,7 +363,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://222cabbage.github.io/2022/05/14/algorithm1/" title="数据结构" target="_blank" rel="external">https://222cabbage.github.io/2022/05/14/algorithm1/</a>
+      <a href="https://222cabbage.github.io/2022/05/18/tips1/" title="JS运算方法-解决小数点运算精度问题" target="_blank" rel="external">https://222cabbage.github.io/2022/05/18/tips1/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -407,12 +410,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2022/05/15/Node2/" title="Node内置模块"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2022/05/18/Component1/" title="基于uniapp和uview1.0的简易表单生成器"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2022/05/14/Face/" title="JS面试题集合"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2022/05/15/Node2/" title="Node内置模块"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

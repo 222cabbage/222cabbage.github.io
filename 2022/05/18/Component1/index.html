@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>基于uniapp和uview1.0的简易表单生成器 | Cabbage</title>
+  <meta name="description" content="基于uniapp和uview1.0的简易表单生成器在新的项目中，有的表单项相同，那么能不能将表单form-item循环生成出来？只需要传递配置项与规则即可自动生成 说干就干 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于uniapp和uview1.0的简易表单生成器">
+<meta property="og:url" content="https://222cabbage.github.io/2022/05/18/Component1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基于uniapp和uview1.0的简易表单生成器在新的项目中，有的表单项相同，那么能不能将表单form-item循环生成出来？只需要传递配置项与规则即可自动生成 说干就干 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-17T16:51:43.000Z">
+<meta property="article:modified_time" content="2022-05-17T16:55:24.158Z">
+<meta property="article:author" content="不知名小白菜">
+<meta property="article:tag" content="组件封装">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://222cabbage.github.io/2022/05/18/Component1/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/222cabbage" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">222cabbage</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">我是小白菜</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chongqing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/222cabbage" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎来到小白菜的博客!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HaoUI/">HaoUI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/">组件封装</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%96%B9%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">JS方法技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node%E5%AD%A6%E4%B9%A0/" rel="tag">Node学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E7%BB%84%E4%BB%B6%E5%BA%93/" rel="tag">个人组件库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/" rel="tag">组件封装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/JS%E6%96%B9%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 13px;">JS方法技巧</a> <a href="/tags/Node%E5%AD%A6%E4%B9%A0/" style="font-size: 14px;">Node学习</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BB%84%E4%BB%B6%E5%BA%93/" style="font-size: 14px;">个人组件库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 13px;">数据结构与算法</a> <a href="/tags/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/" style="font-size: 13px;">组件封装</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 13px;">面试题</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/">组件封装</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/18/Component1/" class="title">基于uniapp和uview1.0的简易表单生成器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-17T16:51:43.000Z" itemprop="datePublished">2022-05-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/utils/">utils</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/18/tips1/" class="title">JS运算方法-解决小数点运算精度问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-17T16:39:07.000Z" itemprop="datePublished">2022-05-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Node/">Node</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/15/Node2/" class="title">Node内置模块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-15T07:16:27.000Z" itemprop="datePublished">2022-05-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/14/algorithm1/" class="title">数据结构</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-14T07:04:01.000Z" itemprop="datePublished">2022-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/14/Face/" class="title">JS面试题集合</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-13T17:40:15.000Z" itemprop="datePublished">2022-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Component1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于uniapp和uview1.0的简易表单生成器
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/05/18/Component1/" class="article-date">
+	  <time datetime="2022-05-17T16:51:43.000Z" itemprop="datePublished">2022-05-18</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/">组件封装</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/" rel="tag">组件封装</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/18/Component1/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="基于uniapp和uview1-0的简易表单生成器"><a href="#基于uniapp和uview1-0的简易表单生成器" class="headerlink" title="基于uniapp和uview1.0的简易表单生成器"></a><strong>基于uniapp和uview1.0的简易表单生成器</strong></h2><p>在新的项目中，有的表单项相同，那么能不能将表单form-item循环生成出来？只需要传递配置项与规则即可自动生成</p>
+<p>说干就干</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br></pre></td><td class="code"><pre><span class="line">​```</span><br><span class="line">//表单Form.vue封装  基于uview1.0的input输入框 可以传递类型为text，textarea或者select下拉框</span><br><span class="line">//其他类型需要使用插槽或者其他方式插入 可以绑定form数据</span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view class=&quot;&quot;&gt;</span><br><span class="line">		&lt;view class=&quot;formbox&quot;&gt;</span><br><span class="line">			&lt;u-form :model=&quot;form&quot; ref=&quot;uForm&quot; label-width=&quot;150rpx&quot;&gt;</span><br><span class="line">				&lt;u-form-item</span><br><span class="line">					v-for=&quot;(item,index) in formItems&quot; </span><br><span class="line">					:key=&quot;index&quot;</span><br><span class="line">					:label=&quot;item.labelName&quot; </span><br><span class="line">					:prop=&quot;item.prop&quot;</span><br><span class="line">					:border-bottom=&quot;item.borderBottom&quot;</span><br><span class="line">					:label-width=&quot;item.labelWidth&quot;</span><br><span class="line">					:style=&quot;&#123;&#x27;position&#x27; : item.prop === &#x27;des&#x27; ? &#x27;relative&#x27; : &#x27;&#x27; &#125;&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;u-input</span><br><span class="line">						v-if=&quot;item.showInput&quot;</span><br><span class="line">						v-model=&quot;form[item.prop]&quot; </span><br><span class="line">						:placeholder=&quot;item.placeholder&quot; </span><br><span class="line">						:type=&quot;item.type&quot; </span><br><span class="line">						:border=&quot;item.border&quot;</span><br><span class="line">						:height=&quot;item.height&quot;</span><br><span class="line">						:class=&quot;item.class&quot;</span><br><span class="line">						:maxlength=&quot;item.maxlength&quot;</span><br><span class="line">						:custom-style=&quot;item.inputStyle ? item.inputStyle : null&quot;</span><br><span class="line">						:clearable=&quot;false&quot;</span><br><span class="line">						@click=&quot;clickChange(item)&quot;/&gt;</span><br><span class="line">						&lt;view v-if=&quot;item.prop === &#x27;fileList&#x27;&quot; class=&quot;filebox&quot;&gt;</span><br><span class="line">							&lt;view class=&quot;title&quot;&gt;</span><br><span class="line">								请上传附件（&#123;&#123; fileLength &#125;&#125;/5）</span><br><span class="line">							&lt;/view&gt;</span><br><span class="line">							&lt;view class=&quot;&quot;&gt;</span><br><span class="line">								&lt;u-upload</span><br><span class="line">									ref=&quot;uUpload&quot; </span><br><span class="line">									:action=&quot;action&quot; </span><br><span class="line">									:auto-upload=&quot;false&quot;</span><br><span class="line">									max-count=&quot;5&quot;</span><br><span class="line">									@on-list-change=&quot;imgChange&quot;</span><br><span class="line">								&gt;&lt;/u-upload&gt;</span><br><span class="line">							&lt;/view&gt;</span><br><span class="line">							&lt;view class=&quot;uploadtip&quot;&gt;</span><br><span class="line">								&lt;u-icon </span><br><span class="line">								name=&quot;info-circle&quot; </span><br><span class="line">								color=&quot;#F7B500&quot; </span><br><span class="line">								size=&quot;26&quot;</span><br><span class="line">								style=&quot;margin-right: 12rpx;&quot;</span><br><span class="line">								&gt;&lt;/u-icon&gt;</span><br><span class="line">								附件支持图片和视频,支持jpg/png/mp4格式</span><br><span class="line">							&lt;/view&gt;</span><br><span class="line">						&lt;/view&gt;</span><br><span class="line">						&lt;view class=&quot;countbox&quot; v-if=&quot;item.prop === &#x27;des&#x27;&quot;&gt;</span><br><span class="line">							&#123;&#123; form.des.length ? form.des.length : 0 &#125;&#125;/300</span><br><span class="line">						&lt;/view&gt;</span><br><span class="line">					&lt;/u-form-item&gt;</span><br><span class="line">			&lt;/u-form&gt;</span><br><span class="line">			&lt;u-picker </span><br><span class="line">			mode=&quot;time&quot; </span><br><span class="line">			:params=&quot;params&quot; </span><br><span class="line">			v-model=&quot;showList[&#x27;timeshow&#x27;]&quot;  </span><br><span class="line">			@confirm=&quot;timechange&quot; </span><br><span class="line">			@cancel=&quot;timecancel&quot;&gt;&lt;/u-picker&gt;</span><br><span class="line">			&lt;view v-if=&quot;methodsList.length&quot;&gt;</span><br><span class="line">				&lt;u-action-sheet</span><br><span class="line">				v-for=&quot;(item,index) in methodsList&quot;</span><br><span class="line">				:key=&quot;index&quot;</span><br><span class="line">				:list=&quot;paramsData[item.propList]&quot;</span><br><span class="line">				v-model=&quot;showList[item.prop + &#x27;show&#x27;]&quot;</span><br><span class="line">				@click=&quot;selectchange&quot;</span><br><span class="line">				&gt;&lt;/u-action-sheet&gt;</span><br><span class="line">			&lt;/view&gt;</span><br><span class="line">		&lt;/view&gt;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		props:&#123;</span><br><span class="line">			// 传递的下拉框数据</span><br><span class="line">			paramsData:&#123;</span><br><span class="line">				type:Object,</span><br><span class="line">				default:()=&gt;(&#123;&#125;)</span><br><span class="line">			&#125;,</span><br><span class="line">			rules:&#123;</span><br><span class="line">				type:Object,</span><br><span class="line">				default:()=&gt;(&#123;&#125;)</span><br><span class="line">			&#125;,</span><br><span class="line">			formItems:&#123;</span><br><span class="line">				type:Array,</span><br><span class="line">				default:()=&gt;([])</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		data()&#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				// 数据绑定</span><br><span class="line">				form:&#123;&#125;,</span><br><span class="line">				// 控制显示</span><br><span class="line">				showList:&#123;&#125;,</span><br><span class="line">				params: &#123;</span><br><span class="line">					year: true,</span><br><span class="line">					month: true,</span><br><span class="line">					day: true,</span><br><span class="line">					hour: true,</span><br><span class="line">					minute: true,</span><br><span class="line">					second: false</span><br><span class="line">				&#125;,</span><br><span class="line">				// 非真实地址</span><br><span class="line">				action: &#x27;http://www.example.com/upload&#x27;,</span><br><span class="line">				fileLength:0,</span><br><span class="line">				methodsList:[],</span><br><span class="line">				selectList:&#123;&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		watch:&#123;&#125;,</span><br><span class="line">		onReady() &#123;</span><br><span class="line">			this.formItems.forEach((items)=&gt;&#123;</span><br><span class="line">				this.$set(this.form,items.prop,&#x27;&#x27;)</span><br><span class="line">				this.$set(this.showList,items.prop + &#x27;show&#x27; ,false)</span><br><span class="line">				this.form.fileList = []</span><br><span class="line">				if(items.type === &#x27;select&#x27;)&#123;</span><br><span class="line">					if(items.prop === &#x27;time&#x27;) return</span><br><span class="line">					const dataStr = items.prop + &#x27;List&#x27;</span><br><span class="line">					const fnStr = items.prop + &#x27;change&#x27;</span><br><span class="line">					this.methodsList.push(&#123;</span><br><span class="line">						prop:items.prop,</span><br><span class="line">						propList:dataStr</span><br><span class="line">					&#125;)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">			setTimeout(()=&gt;&#123;</span><br><span class="line">				this.$refs.uForm.setRules(this.rules);</span><br><span class="line">			&#125;,500)</span><br><span class="line">		&#125;,</span><br><span class="line">		methods:&#123;</span><br><span class="line">			clickChange(item)&#123;</span><br><span class="line">				this.selectList = &#123;</span><br><span class="line">					prop:item.prop,</span><br><span class="line">					formName:item.prop + &#x27;List&#x27;</span><br><span class="line">				&#125;</span><br><span class="line">				this.showList[item.prop + &#x27;show&#x27;] = true</span><br><span class="line">			&#125;,</span><br><span class="line">			selectchange(index)&#123;</span><br><span class="line">				if(this.selectList)&#123;</span><br><span class="line">					this.form[this.selectList.prop] = this.paramsData[this.selectList.formName][index].text;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			timechange(obj)&#123;</span><br><span class="line">				let timestr = Object.values(obj).join(&#x27;-&#x27;)</span><br><span class="line">				this.form.time = timestr</span><br><span class="line">			&#125;,</span><br><span class="line">			timecancel()&#123;</span><br><span class="line">				this.show2 = false</span><br><span class="line">			&#125;,</span><br><span class="line">			// 上传图片变化</span><br><span class="line">			imgChange(lists,name)&#123;</span><br><span class="line">				this.fileLength = lists.length</span><br><span class="line">				this.form.fileList = lists</span><br><span class="line">			&#125;,</span><br><span class="line">			validateForm()&#123;</span><br><span class="line">				let flag</span><br><span class="line">				this.$refs.uForm.validate(valid =&gt; &#123;</span><br><span class="line">						if (valid) &#123;</span><br><span class="line">							// 上传文件</span><br><span class="line">							// his.$refs.uUpload[0].upload()</span><br><span class="line">							flag = true</span><br><span class="line">						&#125; else &#123;</span><br><span class="line">							flag = false</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;)</span><br><span class="line">				return flag</span><br><span class="line">			&#125;,</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">	@import &#x27;./index.scss&#x27;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">//传入配置项  验证规则</span><br><span class="line">	export const rules =  &#123;</span><br><span class="line">			content: [</span><br><span class="line">				&#123; </span><br><span class="line">					required: true, </span><br><span class="line">					message: &#x27;&#x27;,</span><br><span class="line">					trigger: [&#x27;blur&#x27;,&#x27;change&#x27;]</span><br><span class="line">				&#125;</span><br><span class="line">			],</span><br><span class="line">			......</span><br><span class="line">			fileList:[</span><br><span class="line">				&#123;</span><br><span class="line">					type:&#x27;array&#x27;,</span><br><span class="line">					required: true, </span><br><span class="line">					message: &#x27;&#x27;,</span><br><span class="line">					trigger: [&#x27;blur&#x27;, &#x27;change&#x27;]</span><br><span class="line">				&#125;</span><br><span class="line">			],</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">//表单配置</span><br><span class="line">	export const formItems = [</span><br><span class="line">			......</span><br><span class="line">			&#123;</span><br><span class="line">				labelName:&#x27; &#x27;,</span><br><span class="line">				labelWidth:&#x27;0&#x27;,</span><br><span class="line">				type:&#x27;textarea&#x27;,</span><br><span class="line">				prop:&#x27;content&#x27;,</span><br><span class="line">				placeholder:&#x27;默认文字&#x27;,</span><br><span class="line">				height:&#x27;420&#x27;,</span><br><span class="line">				class:&#x27;desbox&#x27;,</span><br><span class="line">				border:false,</span><br><span class="line">				borderBottom:false,</span><br><span class="line">				maxlength:&#x27;300&#x27;,</span><br><span class="line">				showInput:true,</span><br><span class="line">				inputStyle:&#123;</span><br><span class="line">					&#x27;background&#x27;: &#x27;#F5F5F5&#x27;,</span><br><span class="line">					&#x27;border-radius&#x27;:&#x27;8px&#x27;,</span><br><span class="line">					&#x27;padding&#x27;:&#x27;22rpx 26rpx&#x27;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://222cabbage.github.io/2022/05/18/Component1/" title="基于uniapp和uview1.0的简易表单生成器" target="_blank" rel="external">https://222cabbage.github.io/2022/05/18/Component1/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/222cabbage" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/222cabbage" target="_blank"><span class="text-dark">222cabbage</span><small class="ml-1x">我是小白菜</small></a></h3>
+        <div>菜，但是努力</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2022/05/18/tips1/" title="JS运算方法-解决小数点运算精度问题"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/222cabbage" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2022 不知名小白菜
+        
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: true,
+    appId: 'wf68R2QC2QUAaKIBwhTLoM1v-gzGzoHsz',
+    appKey: 'OybYvwmLu9b7LKSt6kySuFkw',
+    placeholder: '快来留言吧嘻嘻嘻',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
