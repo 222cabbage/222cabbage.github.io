@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Express和Koa | Cabbage</title>
+  <meta name="description" content="Node框架Express和KoaExpress123456789101112131415161718192021222324&#x2F;&#x2F;安装方式 1 脚手架安装npm install express-generator -gexpres  demonpm installnode bin&#x2F;www&#x2F;&#x2F; 默认启动是loaclhost:3000&#x2F;&#x2F; 2自己从0实现 npm install express&#x2F;&#x2F; 引">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Express和Koa">
+<meta property="og:url" content="https://222cabbage.github.io/2022/06/04/Node6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Node框架Express和KoaExpress123456789101112131415161718192021222324&#x2F;&#x2F;安装方式 1 脚手架安装npm install express-generator -gexpres  demonpm installnode bin&#x2F;www&#x2F;&#x2F; 默认启动是loaclhost:3000&#x2F;&#x2F; 2自己从0实现 npm install express&#x2F;&#x2F; 引">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-03T17:47:14.000Z">
+<meta property="article:modified_time" content="2022-06-05T16:55:26.168Z">
+<meta property="article:author" content="不知名小白菜">
+<meta property="article:tag" content="Node学习">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://222cabbage.github.io/2022/06/04/Node6/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/222cabbage" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">222cabbage</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">我是小白菜</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chongqing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/222cabbage" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎来到小白菜的博客!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HaoUI/">HaoUI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Webpack/">Webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/utils/">utils</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/websocket/">websocket</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E7%9A%84%E5%AD%A6%E4%B9%A0/">数据库mysql的学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/">组件封装</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%96%B9%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">JS方法技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node%E5%AD%A6%E4%B9%A0/" rel="tag">Node学习</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack%E5%AD%A6%E4%B9%A0/" rel="tag">Webpack学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E7%BB%84%E4%BB%B6%E5%BA%93/" rel="tag">个人组件库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/" rel="tag">组件封装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/JS%E6%96%B9%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 13px;">JS方法技巧</a> <a href="/tags/Node%E5%AD%A6%E4%B9%A0/" style="font-size: 14px;">Node学习</a> <a href="/tags/Webpack%E5%AD%A6%E4%B9%A0/" style="font-size: 13px;">Webpack学习</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/websocket/" style="font-size: 13px;">websocket</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BB%84%E4%BB%B6%E5%BA%93/" style="font-size: 13.5px;">个人组件库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 13px;">数据结构与算法</a> <a href="/tags/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/" style="font-size: 13px;">组件封装</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 13px;">面试题</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E7%9A%84%E5%AD%A6%E4%B9%A0/">数据库mysql的学习</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/06/12/mysql1/" class="title">mysql1</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-06-12T15:55:45.000Z" itemprop="datePublished">2022-06-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/websocket/">websocket</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/06/12/websocket1/" class="title">websocket学习</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-06-12T15:40:18.000Z" itemprop="datePublished">2022-06-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Node/">Node</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/06/04/Node6/" class="title">Express和Koa</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-06-03T17:47:14.000Z" itemprop="datePublished">2022-06-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Node/">Node</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/30/Node5/" class="title">Buffer和浏览器的事件循环</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-29T16:00:55.000Z" itemprop="datePublished">2022-05-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Webpack/">Webpack</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/28/webpack1/" class="title">webpack的学习</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-28T15:18:47.000Z" itemprop="datePublished">2022-05-28</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Node6" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Express和Koa
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/06/04/Node6/" class="article-date">
+	  <time datetime="2022-06-03T17:47:14.000Z" itemprop="datePublished">2022-06-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Node/">Node</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Node%E5%AD%A6%E4%B9%A0/" rel="tag">Node学习</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/06/04/Node6/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="Node框架Express和Koa"><a href="#Node框架Express和Koa" class="headerlink" title="Node框架Express和Koa"></a>Node框架Express和Koa</h2><h3 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//安装方式 1 脚手架安装</span><br><span class="line">npm install express-generator -g</span><br><span class="line">expres  demo</span><br><span class="line">npm install</span><br><span class="line">node bin/www</span><br><span class="line">// 默认启动是loaclhost:3000</span><br><span class="line"></span><br><span class="line">// 2自己从0实现</span><br><span class="line"> npm install express</span><br><span class="line">// 引入</span><br><span class="line">const express = require(&#x27;express&#x27;);</span><br><span class="line">// 返回app</span><br><span class="line">const app = express()</span><br><span class="line">//监听请求路径</span><br><span class="line">app.get(&#x27;/&#x27;,(req,res,next)=&gt;&#123;</span><br><span class="line">    res.end(&#x27;hello get&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line">app.post(&#x27;/&#x27;,(req,res,next)=&gt;&#123;</span><br><span class="line">    res.end(&#x27;hello post&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(5000,()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;开启&#x27;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>express的中间件，中间件就是回调函数，接受req，res，next，next是执行下一个中间件的方法，express本质上是中间件的调用</p>
+<p>express提供了两种方式将中间件应用与程序中，app&#x2F;router.use和app&#x2F;router.methods</p>
+<p>可以是app，也可以是router，methods是指常用的请求方式app.get或者app.post</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">//最普通的中间件</span><br><span class="line">app.use((req,res,next)=&gt;&#123;</span><br><span class="line">    console.log(&#x27;注册了第一个普通中间件&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line">只会执行一个中间件</span><br><span class="line">app.use((req,res,next)=&gt;&#123;</span><br><span class="line">    console.log(&#x27;注册了第一个普通中间件&#x27;)</span><br><span class="line">    // 想要让第二个中间件执行得</span><br><span class="line">    next()</span><br><span class="line">    res.end()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use((req,res,next)=&gt;&#123;</span><br><span class="line">    console.log(&#x27;注册了第二个普通中间件&#x27;)</span><br><span class="line">    res.end() // 报错 不能在end之后再end</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//path匹配中间件</span><br><span class="line">app.use(path,callback)</span><br><span class="line">app.use(&#x27;/home&#x27;,(req,res,next)=&gt;&#123;</span><br><span class="line">    console.log(&#x27;匹配到了/home&#x27;)</span><br><span class="line">    res.end(&#x27;end&#x27;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//path和method匹配中间件</span><br><span class="line">app.get(&#x27;/home&#x27;,(req.res,next)=&gt;&#123;</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//注册多个中间件</span><br><span class="line">app.get(&#x27;/home&#x27;,(req,res,next)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;,(req,res,next)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;,(req,res,next)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//使用express解析req.body很轻松  解析json</span><br><span class="line">app.use(express.json())</span><br><span class="line"></span><br><span class="line">// true是使用qs解析，false那么就是使用node中的queryString进行解析 解析urlencoded</span><br><span class="line">app.use(express.urlencoded(&#123;extended:true&#125;))</span><br><span class="line"></span><br><span class="line">// 解析formdata</span><br><span class="line">npm install multer</span><br><span class="line">const upload = require(&#x27;multer&#x27;)</span><br><span class="line">app.use(multer.any())</span><br><span class="line">// 上穿文件 设置上传路径</span><br><span class="line">const multer = multer(&#123;</span><br><span class="line">    dest:&#x27;./uploads/&#x27; // 上传文件保存位置,</span><br><span class="line">&#125;)</span><br><span class="line">const path = require(&#x27;path&#x27;</span><br><span class="line">const storage = muliter.diskStorge(&#123;</span><br><span class="line">    destintion: (req,res,cb)=&gt;&#123;</span><br><span class="line">        cb(null,&#x27;./uploads/&#x27;)</span><br><span class="line">    &#125;//目的地，</span><br><span class="line">    filename: (req,res,cb)=&gt;&#123;</span><br><span class="line">        cb(null, Date.now() + path.extname(file.originalname))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">upload.single 上传单个文件 upload.array 上传多个文件 可以传递一个key值表示具体处理哪个数据</span><br><span class="line">app.post(&#x27;/upload&#x27;,upload.single(&#x27;&#x27;) ,(req,res,next)=&gt;&#123;</span><br><span class="line">	console.log(req.files)</span><br><span class="line">    res.end(&#x27;上传成功&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line">// 默认没有后缀名</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Koa"><a href="#Koa" class="headerlink" title="Koa"></a>Koa</h3>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://222cabbage.github.io/2022/06/04/Node6/" title="Express和Koa" target="_blank" rel="external">https://222cabbage.github.io/2022/06/04/Node6/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/222cabbage" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/222cabbage" target="_blank"><span class="text-dark">222cabbage</span><small class="ml-1x">我是小白菜</small></a></h3>
+        <div>菜，但是努力</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/06/12/websocket1/" title="websocket学习"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2022/05/30/Node5/" title="Buffer和浏览器的事件循环"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/222cabbage" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2022 不知名小白菜
+        
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: true,
+    appId: 'wf68R2QC2QUAaKIBwhTLoM1v-gzGzoHsz',
+    appKey: 'OybYvwmLu9b7LKSt6kySuFkw',
+    placeholder: '快来留言吧嘻嘻嘻',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
