@@ -26,7 +26,7 @@
 <meta property="og:description" content="Vue2小知识回顾以后应该很多项目都会使用上v3了，但是v2也不能忘掉，毕竟学习过，那么现在就来复习一下 1生命周期在vue2的生命周期中，created可以访问到data的数据，访问不到dom根节点el，在mounted中可以同时访问到el和data 使用keepalive组件缓存路由后组件后，生命周期会触发activated 2：keepalivevue自带组件，防止重复构建和请求，提升性能，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-25T17:20:40.000Z">
-<meta property="article:modified_time" content="2022-07-01T17:35:45.075Z">
+<meta property="article:modified_time" content="2022-07-08T13:22:29.582Z">
 <meta property="article:author" content="不知名小白菜">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
@@ -504,7 +504,63 @@
 
 
 
-<h3 id="32：snabbdom"><a href="#32：snabbdom" class="headerlink" title="32：snabbdom"></a>32：snabbdom</h3><h3 id="33：手写diff算法，生成虚拟dom"><a href="#33：手写diff算法，生成虚拟dom" class="headerlink" title="33：手写diff算法，生成虚拟dom"></a>33：手写diff算法，生成虚拟dom</h3><h3 id="34：手写diff算法，patch不是同一节点"><a href="#34：手写diff算法，patch不是同一节点" class="headerlink" title="34：手写diff算法，patch不是同一节点"></a>34：手写diff算法，patch不是同一节点</h3><h3 id="35：手写diff算法，相同节点有无children-上"><a href="#35：手写diff算法，相同节点有无children-上" class="headerlink" title="35：手写diff算法，相同节点有无children 上"></a>35：手写diff算法，相同节点有无children 上</h3><h3 id="36：手写diff算法，相同节点有无children-中"><a href="#36：手写diff算法，相同节点有无children-中" class="headerlink" title="36：手写diff算法，相同节点有无children 中"></a>36：手写diff算法，相同节点有无children 中</h3><h3 id="37：手写diff算法，相同节点有无children-下"><a href="#37：手写diff算法，相同节点有无children-下" class="headerlink" title="37：手写diff算法，相同节点有无children 下"></a>37：手写diff算法，相同节点有无children 下</h3>
+<h3 id="32：snabbdom"><a href="#32：snabbdom" class="headerlink" title="32：snabbdom"></a>32：snabbdom</h3><p>虚拟节点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    children:undefined,</span><br><span class="line">    data:&#123;&#125;,</span><br><span class="line">    elm:h1,</span><br><span class="line">    key:undefined,</span><br><span class="line">    sel:&#x27;h1&#x27;,</span><br><span class="line">    text:&#x27;你好h1&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>真实节点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;你好h1&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p>新老节点替换规则</p>
+<p>如果新老节点不是同一个节点名称，那么久脑力删除旧的，创建插入新的节点</p>
+<p>判断是否是同一节点是通过key判断的</p>
+<p>添加key能够提升性能 key是唯一标识</p>
+<p> 只能同级比较，跨层直接暴力删除</p>
+<p>如果是相同节点 情况更复杂，两种</p>
+<p>新节点没有children，证明是文本节点，直接覆盖</p>
+<p>新节点有children，分为两种</p>
+<p>新的有children，旧的也有children，diff核心，永远都是从旧节点第一个child开始匹配</p>
+<p>旧前，新前</p>
+<p>旧节点和新节点的第一个相等，那么旧节点和新节点指针相加</p>
+<p>旧后，新后</p>
+<p>旧节点和新节点的最后一个相等，那么旧节点和新节点指针都–</p>
+<p>旧前，新后</p>
+<p>旧节点第一个和新节点的最后一个相等，那么旧节点指针加加和新节点指针–</p>
+<p>旧后，新前</p>
+<p>旧节点最后一个一个和新节点的最后一个相等，那么旧节点指针加加和新节点指针–</p>
+<p>以上都不满足</p>
+<p>创建和删除</p>
+<p>新的有children，旧的没有，创建元素添加，吧旧的内容添加创建新的插入</p>
+<h3 id="33：手写diff算法，生成虚拟dom"><a href="#33：手写diff算法，生成虚拟dom" class="headerlink" title="33：手写diff算法，生成虚拟dom"></a>33：手写diff算法，生成虚拟dom</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">h.js</span><br><span class="line">import vnode from &#x27;./vnode&#x27;</span><br><span class="line">export default function(sel,data,params)&#123;</span><br><span class="line">    if(typeof params === &#x27;string&#x27;)&#123;</span><br><span class="line">        // h的第三个参数是字符串类型 意味着他没有子元素</span><br><span class="line">        return vnode(sel,data,undefined,params,undefined)</span><br><span class="line">    &#125;else if(Array.isArray(params))&#123;</span><br><span class="line">        let child = []</span><br><span class="line">        for(let item of params)&#123;</span><br><span class="line">           child.push(item)</span><br><span class="line">        &#125;</span><br><span class="line">        return vnode(sel,data,child,undefined,undefined)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vnode.js</span><br><span class="line">export default function(sel,data,children,text,ele)&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        sel,</span><br><span class="line">        data,</span><br><span class="line">        children,</span><br><span class="line">        text,</span><br><span class="line">        ele</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">index.js</span><br><span class="line">import h from &#x27;./dom/h&#x27;</span><br><span class="line">// let vnode = h(&#x27;div&#x27;,&#123;&#125;,&#x27;hello&#x27;)</span><br><span class="line">let vnode = h(&#x27;div&#x27;,&#123;&#125;,[</span><br><span class="line">  h(&#x27;h1&#x27;,&#123;&#125;,&#x27;ni&#x27;),</span><br><span class="line">  h(&#x27;h1&#x27;,&#123;&#125;,&#x27;ni2&#x27;),</span><br><span class="line">  h(&#x27;h1&#x27;,&#123;&#125;,&#x27;ni3&#x27;),</span><br><span class="line">])</span><br><span class="line">console.log(vnode)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="34：手写diff算法，patch不是同一节点"><a href="#34：手写diff算法，patch不是同一节点" class="headerlink" title="34：手写diff算法，patch不是同一节点"></a>34：手写diff算法，patch不是同一节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="35：手写diff算法，相同节点有无children-上"><a href="#35：手写diff算法，相同节点有无children-上" class="headerlink" title="35：手写diff算法，相同节点有无children 上"></a>35：手写diff算法，相同节点有无children 上</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="36：手写diff算法，相同节点有无children-中"><a href="#36：手写diff算法，相同节点有无children-中" class="headerlink" title="36：手写diff算法，相同节点有无children 中"></a>36：手写diff算法，相同节点有无children 中</h3><h3 id="37：手写diff算法，相同节点有无children-下"><a href="#37：手写diff算法，相同节点有无children-下" class="headerlink" title="37：手写diff算法，相同节点有无children 下"></a>37：手写diff算法，相同节点有无children 下</h3><h3 id="38：MVVM"><a href="#38：MVVM" class="headerlink" title="38：MVVM"></a>38：MVVM</h3><p>出现的原因：</p>
+<p>web1.0时代，前后端代码都在一起</p>
+<p>前后端代码都是一个人开发，技术没有侧重点，责任不够细分</p>
+<p>项目不好维护</p>
+<p>mvc都是后端先出的，htmlcssjs页面没有，后端无法工作</p>
+<p>web2.0时代</p>
+<p>ajax出现了，前端后端数据分离</p>
+<p>解决问题，后端不用等前端页面弄完，后端做后端，前端做前端，</p>
+<p>单页面，html和css，js都在一个页面，单个页面也会出现不好维护的情况，但是比1.0好</p>
+<p>出现前端mvvm框架，前端出现过mvc框架，但是被mvvm干掉了</p>
+<p>解决问题，吧大页面进行拆分，单个组件进行维护</p>
+<p>什么是mvvm</p>
+<p>model，view，view model的缩写</p>
+<p>view，视图，页面展现的内容</p>
+<p>model，数据模型，数据层，data</p>
+<p>view model 视图模型层 就是vue源码将视图和数据结合的实现</p>
+
       
     </div>
     <div class="article-footer">
