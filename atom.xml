@@ -6,7 +6,7 @@
   <link href="https://222cabbage.github.io/atom.xml" rel="self"/>
   
   <link href="https://222cabbage.github.io/"/>
-  <updated>2022-07-18T16:25:41.660Z</updated>
+  <updated>2022-08-25T04:29:14.007Z</updated>
   <id>https://222cabbage.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webgl1</title>
+    <link href="https://222cabbage.github.io/2022/08/25/webgl1/"/>
+    <id>https://222cabbage.github.io/2022/08/25/webgl1/</id>
+    <published>2022-08-25T04:12:33.000Z</published>
+    <updated>2022-08-25T04:29:14.007Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="webGL入门"><a href="#webGL入门" class="headerlink" title="webGL入门"></a>webGL入门</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;webGL入门&quot;&gt;&lt;a href=&quot;#webGL入门&quot; class=&quot;headerlink&quot; title=&quot;webGL入门&quot;&gt;&lt;/a&gt;webGL入门&lt;/h2&gt;</summary>
+      
+    
+    
+    
+    <category term="webGL" scheme="https://222cabbage.github.io/categories/webGL/"/>
+    
+    
+    <category term="webGL" scheme="https://222cabbage.github.io/tags/webGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vite入门</title>
+    <link href="https://222cabbage.github.io/2022/08/24/vite1/"/>
+    <id>https://222cabbage.github.io/2022/08/24/vite1/</id>
+    <published>2022-08-24T13:22:57.000Z</published>
+    <updated>2022-08-25T04:11:27.995Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Vite入门"><a href="#Vite入门" class="headerlink" title="Vite入门"></a>Vite入门</h2><p>为什么需要工程化？</p><p>太多的资源文件，高级语法，优化代码体积，提升代码效率，热更新</p><p>提供模块加载方案，兼容不同模块规范</p><p>高级语法转译，如sass，ts。资源加载，图片，字体，worker</p><p>产物压缩，无用代码剔除，对不支持高级语法的浏览器等平台进行语法降级</p><p>热更新</p><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><p>No-bundle开发服务，源文件无需打包</p><p>生产环境基于Rollup的Bundler</p><p>高性能，dev启动速度和热更新速度非常快</p><p>相比于webpack配置简单易用，开发体验好</p><h4 id="传统构建工具缺点："><a href="#传统构建工具缺点：" class="headerlink" title="传统构建工具缺点："></a>传统构建工具缺点：</h4><p>编译慢，热更新慢</p><p>瓶颈；bundle带来的性能开销，js语言本身的性能瓶颈</p><h4 id="vite："><a href="#vite：" class="headerlink" title="vite："></a>vite：</h4><p>基于原生js的ESM，浏览器无需打包源代码，祛除了bundle的性能开销，天然的按需加载，可以利用文件级的浏览器缓存</p><p>深度使用esbuild</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm i pnpm -g</span><br><span class="line">pnpm create vite // 根据项目进行条件选择</span><br><span class="line">pnpm i // 下载依赖</span><br><span class="line">pnpm run dev</span><br><span class="line">pnpm i  sass -D</span><br><span class="line">其他配置</span><br><span class="line">tree shaking在vite中默认开启</span><br></pre></td></tr></table></figure><h4 id="为什么要进行预打包？"><a href="#为什么要进行预打包？" class="headerlink" title="为什么要进行预打包？"></a>为什么要进行预打包？</h4><p>避免node_modules过多文件请求</p><p>将commonjs转换为ESM格式</p><h4 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h4><p>服务启动前检查项目依赖</p><p>用esbuild对依赖代码进行预打包</p><p>改写import语句，指定依赖为预构建产物路径</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">改写前</span><br><span class="line">import React from &#x27;react&#x27;</span><br><span class="line">改写后</span><br><span class="line">import React from &#x27;./node_modules/.vite/react.js&#x27;</span><br><span class="line">关键技术：单文件编译使用esbuild完成</span><br><span class="line">局限性：不支持类型检查，不支持语法降级到es5，最低es6，因此在生产环境需要调用tsc</span><br><span class="line">关键技术：代码压缩</span><br><span class="line">关键技术：插件机制</span><br><span class="line">开发阶段 =&gt; 模拟rollup插件机制</span><br><span class="line">生产阶段 =&gt; 直接使用rollup</span><br><span class="line">注：不是所有rollup插件都能兼容vite</span><br></pre></td></tr></table></figure><h4 id="vite后续学习路线："><a href="#vite后续学习路线：" class="headerlink" title="vite后续学习路线："></a>vite后续学习路线：</h4><p>esbuild，rollup：可以去看官方文档，编写的很好</p><p>先尝试基础的配置</p><p>再进阶插件开发</p><h4 id="为什么需要插件机制"><a href="#为什么需要插件机制" class="headerlink" title="为什么需要插件机制"></a>为什么需要插件机制</h4><h4 id="vite钩子："><a href="#vite钩子：" class="headerlink" title="vite钩子："></a>vite钩子：</h4><p><img src="https://s1.ax1x.com/2022/08/25/vg46i9.png"></p><h4 id="插件的配置和使用demo"><a href="#插件的配置和使用demo" class="headerlink" title="插件的配置和使用demo"></a>插件的配置和使用demo</h4><p><img src="https://s1.ax1x.com/2022/08/25/vg4qzt.png"></p><h4 id="代码拆包"><a href="#代码拆包" class="headerlink" title="代码拆包"></a>代码拆包</h4><p>……</p><h4 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h4><p>js语法标准繁多，浏览器支持程度不同，将高级语法降级</p><p>原理：将代码转换为高级语法抽象语法树，再转换为低级语法抽象树，再通过babel的generator转换为代码</p><p><img src="https://s1.ax1x.com/2022/08/25/vg5MWR.png"></p><h4 id="语法安全降级解决方案："><a href="#语法安全降级解决方案：" class="headerlink" title="语法安全降级解决方案："></a>语法安全降级解决方案：</h4><p>vite上层解决方案：@vitejs&#x2F;plugin-legacy</p><p>底层原理：借助babel进行语法降级，提前注入Polyfill实现，如core-js，regeneraator-runtime</p><h4 id="服务端渲染SSR"><a href="#服务端渲染SSR" class="headerlink" title="服务端渲染SSR"></a>服务端渲染SSR</h4><p><img src="https://s1.ax1x.com/2022/08/25/vg5UFH.png"></p><p>未完待续……</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Vite入门&quot;&gt;&lt;a href=&quot;#Vite入门&quot; class=&quot;headerlink&quot; title=&quot;Vite入门&quot;&gt;&lt;/a&gt;Vite入门&lt;/h2&gt;&lt;p&gt;为什么需要工程化？&lt;/p&gt;
+&lt;p&gt;太多的资源文件，高级语法，优化代码体积，提升代码效率，热更新&lt;/p&gt;
+&lt;p</summary>
+      
+    
+    
+    
+    <category term="vite" scheme="https://222cabbage.github.io/categories/vite/"/>
+    
+    
+    <category term="vite" scheme="https://222cabbage.github.io/tags/vite/"/>
+    
+  </entry>
   
   <entry>
     <title>学习一下ts</title>
