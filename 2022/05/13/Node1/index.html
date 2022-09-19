@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2022/05/14/Oc0c4g.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/05/14/Oc02CQ.png">
 <meta property="article:published_time" content="2022-05-12T17:20:29.000Z">
-<meta property="article:modified_time" content="2022-05-15T07:18:40.385Z">
+<meta property="article:modified_time" content="2022-09-18T10:26:47.939Z">
 <meta property="article:author" content="不知名小白菜">
 <meta property="article:tag" content="Node学习">
 <meta name="twitter:card" content="summary">
@@ -363,13 +363,26 @@
 <h3 id="3：Node"><a href="#3：Node" class="headerlink" title="3：Node"></a><strong>3：Node</strong></h3><p>node是基于v8引擎的js运行环境</p>
 <p>如果想在一台电脑运行多个node版本 那么可以借助nvm与n工具</p>
 <p>但是这两个工具不支持windows，不过有其他人开发出了支持windows的版本</p>
-<h3 id="4：全局对象和模块化开发"><a href="#4：全局对象和模块化开发" class="headerlink" title="4：全局对象和模块化开发"></a><strong>4：全局对象和模块化开发</strong></h3><p>node index.js env&#x3D;development</p>
+<h3 id="4：全局对象和模块化开发"><a href="#4：全局对象和模块化开发" class="headerlink" title="4：全局对象和模块化开发"></a><strong>4：全局对象和模块化开发</strong></h3><h4 id="process"><a href="#process" class="headerlink" title="process"></a>process</h4><p>node index.js env&#x3D;development</p>
 <p>可以在后面跟随传递参数 在index.js中根据console.log(process.argv)获取</p>
 <p><img src="https://s1.ax1x.com/2022/05/14/Oc0c4g.png"></p>
 <p><img src="https://s1.ax1x.com/2022/05/14/Oc02CQ.png"></p>
 <p>console.clear() 清空</p>
 <p>console.trace() 追踪 打印函数调用栈</p>
-<h2 id="常见全局对象"><a href="#常见全局对象" class="headerlink" title="常见全局对象"></a>常见全局对象</h2><p>require，__dirname，module，URL，exports等，可以去官网查看更多全局对象</p>
+<h2 id="常见全局对象"><a href="#常见全局对象" class="headerlink" title="常见全局对象"></a>常见全局对象</h2><p>require，__dirname，__filename,module，URL，exports等，可以去官网查看更多全局对象</p>
+<p>process，global，</p>
+<p>计时器全局对象：setTimeout，setInterval，setImmediate(立即执行)</p>
+<p>process.nextTick(()&#x3D;&gt;{</p>
+<p>​	console.log(‘process.nextTick’)</p>
+<p>})</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;setTimeout)</span><br><span class="line">&#125;,1000)</span><br></pre></td></tr></table></figure>
+
+<p>有的对象是因为在每个模块中都有，看起来像全局变量，在命令行是无法使用的</p>
+<p>global全局对象：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(global)</span><br><span class="line">打印所有全局对象 //不是全部，一部分全局对象</span><br></pre></td></tr></table></figure>
+
+<p>global与window相似</p>
+<p>window会将var的变量自动挂载到window，global不会，所有global.变量是不对的</p>
 <h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><p>最终目的：将程序划分为一个个结构，每个结构包含自己的逻辑到&#x3D;代码，不会影响到其他作用域</p>
 <p>可以暴露出变量，函数，对象供其他结构导入使用</p>
 <p>js缺陷：var定义的变量作用域问题，没有模块化的问题 可以用立即执行函数解决</p>
