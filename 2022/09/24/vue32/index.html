@@ -17,16 +17,25 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>标签: webGL | Cabbage</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://222cabbage.github.io/tags/webGL/index.html">
+  <title>vue3的优化 | Cabbage</title>
+  <meta name="description" content="vue3做了什么样的优化？为什么需要这些优化？vue从1-2最大的变化就是引入了虚拟dom vue3的优化 更好的代码管理方式monorepo，将不同模块拆分到不同的package中每个package有各自的API，类型定义和测试 package-比如reactive，是可以独立于vue.js使用的，这样用户如果只想使用单个vue的能力而不必去依赖整个库。减少了引用包的体积大小，v2是做不到的 i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3的优化">
+<meta property="og:url" content="https://222cabbage.github.io/2022/09/24/vue32/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vue3做了什么样的优化？为什么需要这些优化？vue从1-2最大的变化就是引入了虚拟dom vue3的优化 更好的代码管理方式monorepo，将不同模块拆分到不同的package中每个package有各自的API，类型定义和测试 package-比如reactive，是可以独立于vue.js使用的，这样用户如果只想使用单个vue的能力而不必去依赖整个库。减少了引用包的体积大小，v2是做不到的 i">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/09/24/xAIa7V.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/09/24/xAIbnI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/09/24/xAom34.png">
+<meta property="article:published_time" content="2022-09-24T05:02:16.000Z">
+<meta property="article:modified_time" content="2022-09-24T14:34:09.863Z">
 <meta property="article:author" content="不知名小白菜">
+<meta property="article:tag" content="vue3">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/09/24/xAIa7V.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://222cabbage.github.io/tags/webGL/index.html">
+  <link rel="canonical" href="https://222cabbage.github.io/2022/09/24/vue32/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -303,91 +312,211 @@
 
   
   <main class="main" role="main">
-  <article class="content article article-tags post-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">标签: webGL</h1>
-      <p class="text-muted hidden-xs">共 1 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/tags">All</a></li>
-          
-          <li><a href="/tags/面试题/">面试题</a></li>
-          
-          <li><a href="/tags/组件封装/">组件封装</a></li>
-          
-          <li><a href="/tags/个人组件库/">个人组件库</a></li>
-          
-          <li><a href="/tags/Node学习/">Node学习</a></li>
-          
-          <li><a href="/tags/微信小程序/">微信小程序</a></li>
-          
-          <li><a href="/tags/数据结构与算法1/">数据结构与算法1</a></li>
-          
-          <li><a href="/tags/数据结构与算法/">数据结构与算法</a></li>
-          
-          <li><a href="/tags/mysql/">mysql</a></li>
-          
-          <li><a href="/tags/promise/">promise</a></li>
-          
-          <li><a href="/tags/vite/">vite</a></li>
-          
-          <li><a href="/tags/JS方法技巧/">JS方法技巧</a></li>
-          
-          <li><a href="/tags/React/">React</a></li>
-          
-          <li><a href="/tags/ts/">ts</a></li>
-          
-          <li><a href="/tags/Vue2源码/">Vue2源码</a></li>
-          
-          <li><a href="/tags/vue/">vue</a></li>
-          
-          <li><a href="/tags/webGL/">webGL</a></li>
-          
-          <li><a href="/tags/vue3/">vue3</a></li>
-          
-          <li><a href="/tags/WebGIS/">WebGIS</a></li>
-          
-          <li><a href="/tags/websocket/">websocket</a></li>
-          
-          <li><a href="/tags/Webpack学习/">Webpack学习</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="row">
-        
-<div class="col-md-6">
+  <div class="content">
+  <article id="post-vue32" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2022-08-25T04:12:33.000Z" itemprop="datePublished">2022-08-25</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2022/08/25/webgl1/">webgl入一下门</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/webGL/" class="label label-default mb">webGL</a>
-     
-     
-   </div>
-   
-</article>
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue3的优化
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/09/24/vue32/" class="article-date">
+	  <time datetime="2022-09-24T05:02:16.000Z" itemprop="datePublished">2022-09-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/vue3/">vue3</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/vue3/" rel="tag">vue3</a>
+  </span>
 
 
-</div>
+        
 
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/09/24/vue32/#comments" class="article-comment-link">评论</a></span>
+        
       </div>
     </div>
-  </article>
-   
-</main>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="vue3做了什么样的优化？为什么需要这些优化？"><a href="#vue3做了什么样的优化？为什么需要这些优化？" class="headerlink" title="vue3做了什么样的优化？为什么需要这些优化？"></a>vue3做了什么样的优化？为什么需要这些优化？</h2><p>vue从1-2最大的变化就是引入了虚拟dom</p>
+<p>vue3的优化</p>
+<h4 id="更好的代码管理方式monorepo，将不同模块拆分到不同的package中"><a href="#更好的代码管理方式monorepo，将不同模块拆分到不同的package中" class="headerlink" title="更好的代码管理方式monorepo，将不同模块拆分到不同的package中"></a>更好的代码管理方式monorepo，将不同模块拆分到不同的package中</h4><p>每个package有各自的API，类型定义和测试</p>
+<p>package-比如reactive，是可以独立于vue.js使用的，这样用户如果只想使用单个vue的能力而不必去依赖整个库。减少了引用包的体积大小，v2是做不到的</p>
+<p>import { reactive }  from ‘vue’</p>
+<h4 id="采用了ts开发"><a href="#采用了ts开发" class="headerlink" title="采用了ts开发"></a>采用了ts开发</h4><p>v2是flow，v3使用ts重构</p>
+<p>flow是facebook出品的js静态类型检查工具，以非常小的成本对已有js代码迁入，v2采用时就是考虑到了flow的轻便灵活性</p>
+<p>但是flow对于复杂场景类型十分不友好，v2源码有吐槽</p>
+<p><img src="https://s1.ax1x.com/2022/09/24/xAIa7V.png"></p>
+<p>ts则相反，更好的类型检查</p>
+<h4 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h4><p>减少了包的体积，移除冷门的feature，使用了tree-shaking</p>
+<p>tree-shaking是依赖es6的静态结构，import和export。通过编译阶段的静态分析，找到没有引入的模块并打标记</p>
+<p>间接减少了vue包的体积</p>
+<p>数据劫持优化</p>
+<p>vue的数据从1x版本开始就是响应式的</p>
+<p><img src="https://s1.ax1x.com/2022/09/24/xAIbnI.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vue2是通过object.deineProperty(data,&#x27;a&#x27;,&#123;</span><br><span class="line">    get()&#123;</span><br><span class="line">        //track</span><br><span class="line">    &#125;,</span><br><span class="line">    set()&#123;</span><br><span class="line">        //trigger</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">缺点：必须要先知道拦截对象的key，因此无法检测对象属性的删除和添加</span><br><span class="line">因此退出了$set和$delete</span><br><span class="line"></span><br><span class="line">obj.define缺陷：如果对象层级较深，为了对所有属性进行劫持，需要遍历劫持，性能消耗高</span><br><span class="line"></span><br><span class="line">因此vue3采用了proxy</span><br><span class="line">proxy检测的是整个对象，因此对于新增删除都可以监听到</span><br><span class="line">但是proxy无法监听内部深层次的对象变化，因此v3的处理方式是在getter中去递归响应式</span><br><span class="line">这样的好处是真正访问到的内部对象才会变成响应式，而不是无脑递归</span><br></pre></td></tr></table></figure>
 
+<h4 id="编译优化"><a href="#编译优化" class="headerlink" title="编译优化"></a>编译优化</h4><p>除了在数据劫持部分的优化，也可以在耗时较多的patch阶段想办法</p>
+<p>2x</p>
+<p><img src="https://s1.ax1x.com/2022/09/24/xAom34.png"></p>
+<p>3x</p>
+<p>通过在编译阶段优化编译结果，实现运行时patch过程的优化</p>
+<p>2x版本对于数据更新并触发重新渲染的粒度是组件级的</p>
+<p>每次diff都会全部对比，vnode和模板大小正相关</p>
+<p>当只有小部分更改时，多余的便利是对性能的浪费</p>
+<p>v3通过编译阶段对静态模板的分析，编译生成了Block tree &#x2F;&#x2F;将模板基于动态节点指令切割的嵌套区域，每个区块内部的节点结构是固定的，每个区块只需要一个Array来追踪自身包含的动态节点</p>
+<p>借助block tree vue将vnode更新性能由整体模板大小相关变成了与动态内容修改的数量有关</p>
+<p>3x版本在编译节点还包含对slot的编译优化，事件侦听函数的缓存优化，并且在运行时重写了diff算法</p>
+<h4 id="优化逻辑组织"><a href="#优化逻辑组织" class="headerlink" title="优化逻辑组织"></a>优化逻辑组织</h4><p>3x还提供了comonsition api</p>
+<p>2x被称为options api</p>
+<p>options api在组件小的时候一目了然，大的时候就很复杂，每当修改某一个关注点，就需要上下滑动变动多个位置</p>
+<h4 id="优化逻辑复用"><a href="#优化逻辑复用" class="headerlink" title="优化逻辑复用"></a>优化逻辑复用</h4><p>v2采用mixins，可以定义props，data，容易导致定义相同名称变量，导致命名冲突</p>
+<p>而且在使用时，对于不在当前组件定义的变量等事物，使用时数据来源不清器</p>
+<p>v3采用hook方式</p>
+<p>更好的类型支持</p>
+<p>因为componsition具备更好的类型支持，因为都是函数，类型容易被推导，和v2不同，v2使用this不容易推导。</p>
+<p>componsition api对tree-shaking更友好，代码压缩更容易</p>
+<h4 id="引入RFC：使每个版本改动可控"><a href="#引入RFC：使每个版本改动可控" class="headerlink" title="引入RFC：使每个版本改动可控"></a>引入RFC：使每个版本改动可控</h4><p>v2部分采用REF(reqquest for comments) &#x2F;&#x2F;为新功能进入框架提供一个一致且受控的路径</p>
+<p>v3大规模采用RFC，你可以了解每一个feature采用或者被废弃的前因后果</p>
+<h4 id="小缺点："><a href="#小缺点：" class="headerlink" title="小缺点："></a>小缺点：</h4><p>vue3是采用es6的语法开发，有些api如proxy是没有polyfill的，这就意味着官方需要单独出一个ie11的compat版本来支持ie11</p>
+<p>v2官方声明继续维护18个月，也就是说18个月以后，如果你的项目出了什么问题，那么就需要你自己阅读源码解决</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://222cabbage.github.io/2022/09/24/vue32/" title="vue3的优化" target="_blank" rel="external">https://222cabbage.github.io/2022/09/24/vue32/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/222cabbage" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/222cabbage" target="_blank"><span class="text-dark">222cabbage</span><small class="ml-1x">我是小白菜</small></a></h3>
+        <div>菜，但是努力</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2022/09/23/webgis1/" title="看看WebGIS，极简单的智慧校园小demo"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 	
 	
@@ -437,6 +566,37 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: true,
+    appId: 'wf68R2QC2QUAaKIBwhTLoM1v-gzGzoHsz',
+    appKey: 'OybYvwmLu9b7LKSt6kySuFkw',
+    placeholder: '快来留言吧嘻嘻嘻',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
