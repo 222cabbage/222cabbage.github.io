@@ -4,7 +4,7 @@
   <url>
     <loc>https://222cabbage.github.io/2022/07/10/tsstudy1/</loc>
     
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-10-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -326,14 +326,14 @@
 
   
   <url>
-    <loc>https://222cabbage.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <loc>https://222cabbage.github.io/tags/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/tags/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/</loc>
+    <loc>https://222cabbage.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -361,7 +361,7 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/tags/mysql/</loc>
+    <loc>https://222cabbage.github.io/tags/Go/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -375,21 +375,14 @@
   </url>
   
   <url>
+    <loc>https://222cabbage.github.io/tags/mysql/</loc>
+    <lastmod>2022-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://222cabbage.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
-    <lastmod>2022-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://222cabbage.github.io/tags/Go/</loc>
-    <lastmod>2022-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://222cabbage.github.io/tags/promise/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -403,7 +396,7 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/tags/ts/</loc>
+    <loc>https://222cabbage.github.io/tags/promise/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -417,14 +410,7 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/tags/vite/</loc>
-    <lastmod>2022-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://222cabbage.github.io/tags/vue/</loc>
+    <loc>https://222cabbage.github.io/tags/ts/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -438,6 +424,13 @@
   </url>
   
   <url>
+    <loc>https://222cabbage.github.io/tags/vite/</loc>
+    <lastmod>2022-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://222cabbage.github.io/tags/vue3/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -445,7 +438,7 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/tags/WebGIS/</loc>
+    <loc>https://222cabbage.github.io/tags/vue/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -453,6 +446,13 @@
   
   <url>
     <loc>https://222cabbage.github.io/tags/webGL/</loc>
+    <lastmod>2022-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://222cabbage.github.io/tags/WebGIS/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -475,14 +475,14 @@
 
   
   <url>
-    <loc>https://222cabbage.github.io/categories/%E9%9D%A2%E8%AF%95/</loc>
+    <loc>https://222cabbage.github.io/categories/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/categories/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/</loc>
+    <loc>https://222cabbage.github.io/categories/%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -510,6 +510,13 @@
   </url>
   
   <url>
+    <loc>https://222cabbage.github.io/categories/Go/</loc>
+    <lastmod>2022-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://222cabbage.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E7%9A%84%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -524,7 +531,7 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/categories/Go/</loc>
+    <loc>https://222cabbage.github.io/categories/React/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -538,7 +545,7 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/categories/React/</loc>
+    <loc>https://222cabbage.github.io/categories/utils/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -552,7 +559,7 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/categories/utils/</loc>
+    <loc>https://222cabbage.github.io/categories/vue%E6%A1%86%E6%9E%B6%E6%BA%90%E7%A0%81/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -566,20 +573,6 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/categories/vue/</loc>
-    <lastmod>2022-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://222cabbage.github.io/categories/vue%E6%A1%86%E6%9E%B6%E6%BA%90%E7%A0%81/</loc>
-    <lastmod>2022-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://222cabbage.github.io/categories/vue3/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -587,7 +580,7 @@
   </url>
   
   <url>
-    <loc>https://222cabbage.github.io/categories/WebGIS/</loc>
+    <loc>https://222cabbage.github.io/categories/vue/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -595,6 +588,13 @@
   
   <url>
     <loc>https://222cabbage.github.io/categories/webGL/</loc>
+    <lastmod>2022-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://222cabbage.github.io/categories/WebGIS/</loc>
     <lastmod>2022-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
