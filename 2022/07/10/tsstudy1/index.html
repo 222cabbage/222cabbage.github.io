@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.ax1x.com/2022/07/10/js8xzV.png">
 <meta property="article:published_time" content="2022-07-10T03:11:20.000Z">
-<meta property="article:modified_time" content="2022-10-06T16:57:50.642Z">
+<meta property="article:modified_time" content="2022-10-07T05:40:49.106Z">
 <meta property="article:author" content="不知名小白菜">
 <meta property="article:tag" content="ts">
 <meta name="twitter:card" content="summary">
@@ -410,32 +410,26 @@
 
 <h5 id="泛型工厂函数"><a href="#泛型工厂函数" class="headerlink" title="泛型工厂函数"></a>泛型工厂函数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">工厂函数类型定义</span><br><span class="line">代表所有类【等价JS的构造函数】的函数类型</span><br><span class="line">泛型工厂函数定义：一个可以创建任意类对象的通用函数</span><br><span class="line">使用场景：</span><br><span class="line">不方便或者没有办法直接new类名()格式来创建对象，在一些测试欧哲调试代码中简化代码使用</span><br><span class="line"></span><br><span class="line">通用函数类型</span><br><span class="line">type fn = （...args：any）=&gt; any</span><br><span class="line"></span><br><span class="line">interface fn &#123;</span><br><span class="line">    (..args:any):any</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fnn:fn = () =&gt; &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let t = new Test() //在ts中不能直接new一个函数创建实例</span><br><span class="line"></span><br><span class="line">type fn = new (...args) =&gt; Student学生类</span><br><span class="line">type fn = new (...args) =&gt; Teacher老师类</span><br><span class="line"></span><br><span class="line">更加具备通用性</span><br><span class="line">type fn = new (...args) =&gt; any</span><br><span class="line"></span><br><span class="line">工厂函数</span><br><span class="line"></span><br><span class="line">泛型工厂函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h5 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">将多个类型合并【多个类型属性和方法的并集】成的类型就是交叉类型</span><br><span class="line"></span><br><span class="line">type1 = </span><br><span class="line">type2 = </span><br><span class="line">type3 = </span><br><span class="line">let obj:type1 &amp; type2 &amp; type3 = </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">将多个类型合并【多个类型属性和方法的并集】成的类型就是交叉类型</span><br><span class="line"></span><br><span class="line">type1 = </span><br><span class="line">type2 = </span><br><span class="line">type3 = </span><br><span class="line">let obj:type1 &amp; type2 &amp; type3 = </span><br><span class="line">交叉类型可以获取两个类型的任意变量和方法，联合类型只能获取共有属性和方法</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">应用场景</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h5 id="infer"><a href="#infer" class="headerlink" title="infer"></a>infer</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">infer表示在extends条件语句中以占位符出现的用来修饰数据类型的关键字，被修饰的数据类型等到使用时才能被推断出来</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h5 id="ts高级类型"><a href="#ts高级类型" class="headerlink" title="ts高级类型"></a>ts高级类型</h5><p>extract</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>exclude</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>record</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>pick</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>partial</p>
+<p>required</p>
+<p>readonly</p>
+<p>omit</p>
 
       
     </div>
