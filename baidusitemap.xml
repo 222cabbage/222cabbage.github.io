@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://222cabbage.github.io/2022/10/09/mobile1/</loc>
-    <lastmod>2022-10-09</lastmod>
+    <loc>https://222cabbage.github.io/2022/09/01/algorithm2/</loc>
+    <lastmod>2022-10-12</lastmod>
   </url>
   <url>
     <loc>https://222cabbage.github.io/2022/06/12/mysql1/</loc>
-    <lastmod>2022-10-08</lastmod>
+    <lastmod>2022-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://222cabbage.github.io/2022/10/09/mobile1/</loc>
+    <lastmod>2022-10-09</lastmod>
   </url>
   <url>
     <loc>https://222cabbage.github.io/2022/10/07/canvas1/</loc>
@@ -43,10 +47,6 @@
   <url>
     <loc>https://222cabbage.github.io/2022/05/13/Node1/</loc>
     <lastmod>2022-09-18</lastmod>
-  </url>
-  <url>
-    <loc>https://222cabbage.github.io/2022/09/01/algorithm2/</loc>
-    <lastmod>2022-09-17</lastmod>
   </url>
   <url>
     <loc>https://222cabbage.github.io/2022/09/14/miniweixin/</loc>
